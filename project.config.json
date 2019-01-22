@@ -9,7 +9,7 @@
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
-	"appid": "wxaba1e751e507aeac",
+	"appid": "wxef262d893b722e7b",
 	"projectname": "todo",
 	"condition": {
 		"search": {
