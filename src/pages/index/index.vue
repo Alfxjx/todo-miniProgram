@@ -11,7 +11,7 @@
     </div>
     <button class="weui-btn add" type="primary" @click="addTODO()">添加</button>
     <button class="weui-btn save" type="primary" @click="save">保存</button>
-    <button class="weui-btn del" type="warn" disabled="true" @click="del">删除</button>
+    <button class="weui-btn del" type="warn" @click="del">删除</button>
     <div class="list-title">待办列表</div>
     <div class="list-wrapper">
       <ul class="done-list">
@@ -65,10 +65,21 @@
       },
       del(){
         console.log('delete')
-        wx.removeStorage({
-          key: user,
+        wx.showModal({
+          title: '注意',
+          content:'确定要删除了嘛，删出后不能恢复',
           success(res){
-            console.log(res.data)
+            if(res.confirm){
+              console.log('yes, del')
+              wx.removeStorage({
+                key: user,
+                success(res){
+                  console.log(res.data)
+                }
+              })
+            }else if(res.cancel){
+              console.log('no, come back')
+            }
           }
         })
       }
